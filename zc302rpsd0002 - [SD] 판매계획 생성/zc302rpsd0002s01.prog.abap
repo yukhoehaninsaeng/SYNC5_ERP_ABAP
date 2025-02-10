@@ -1,0 +1,9 @@
+*&---------------------------------------------------------------------*
+*& Include          ZC302RPSD0002S01
+*&---------------------------------------------------------------------*
+SELECTION-SCREEN BEGIN OF BLOCK B1 WITH FRAME TITLE TEXT-T01.
+  PARAMETERS : P_SORG  TYPE ZC302SDT0001-SALE_ORG OBLIGATORY MODIF ID ORG,
+               P_CHAN  TYPE ZC302SDT0001-CHANNEL AS LISTBOX VISIBLE LENGTH 10 OBLIGATORY,
+               P_YEAR  TYPE ZC302SDT0001-PYEAR OBLIGATORY,
+               P_MONTH TYPE ZC302SDT0001-PMONTH OBLIGATORY.
+SELECTION-SCREEN END OF BLOCK B1.

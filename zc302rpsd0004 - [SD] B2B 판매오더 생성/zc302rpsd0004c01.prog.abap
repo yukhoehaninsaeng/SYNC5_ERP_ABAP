@@ -1,0 +1,80 @@
+*&---------------------------------------------------------------------*
+*& Include          ZC302RPSD0004C01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*& Class LCL_EVENT_HANDLER
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+CLASS LCL_EVENT_HANDLER DEFINITION FINAL.
+  PUBLIC SECTION.
+    CLASS-METHODS TOOLBAR FOR EVENT TOOLBAR OF CL_GUI_ALV_GRID
+      IMPORTING E_OBJECT E_INTERACTIVE.
+
+    CLASS-METHODS USER_COMMAND FOR EVENT USER_COMMAND OF CL_GUI_ALV_GRID
+      IMPORTING E_UCOMM.
+
+    CLASS-METHODS TOP_OF_PAGE FOR EVENT TOP_OF_PAGE OF CL_GUI_ALV_GRID
+      IMPORTING E_DYNDOC_ID.
+
+    CLASS-METHODS BUTTON_CLICK FOR EVENT BUTTON_CLICK OF CL_GUI_ALV_GRID
+      IMPORTING ES_COL_ID ES_ROW_NO.
+
+    CLASS-METHODS BUTTON_CLICK_REASON FOR EVENT BUTTON_CLICK OF CL_GUI_ALV_GRID
+      IMPORTING ES_COL_ID ES_ROW_NO.
+
+    CLASS-METHODS DATA_CHANGE FOR EVENT DATA_CHANGED_FINISHED OF CL_GUI_ALV_GRID
+      IMPORTING E_MODIFIED ET_GOOD_CELLS.
+
+    CLASS-METHODS SEARCH_HELP FOR EVENT ONF4 OF CL_GUI_ALV_GRID
+      IMPORTING E_FIELDNAME E_FIELDVALUE ES_ROW_NO ER_EVENT_DATA ET_BAD_CELLS E_DISPLAY.
+
+    CLASS-METHODS HOTSPOT_CLICK FOR EVENT HOTSPOT_CLICK OF CL_GUI_ALV_GRID
+      IMPORTING E_ROW_ID E_COLUMN_ID.
+ENDCLASS.
+*&---------------------------------------------------------------------*
+*& Class (Implementation) LCL_EVENT_HANDLER
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+CLASS LCL_EVENT_HANDLER IMPLEMENTATION.
+  METHOD TOOLBAR.
+    " ALV 툴바 버튼 추가
+    PERFORM HANDLE_TOOLBAR USING E_OBJECT E_INTERACTIVE.
+  ENDMETHOD.
+
+  METHOD USER_COMMAND.
+    " ALV 툴바 버튼 이벤트 구현
+    PERFORM HANDLE_USER_COMMAND USING E_UCOMM.
+  ENDMETHOD.
+
+  METHOD TOP_OF_PAGE.
+    " Top of Page
+    PERFORM EVENT_TOP_OF_PAGE.
+  ENDMETHOD.
+
+  METHOD BUTTON_CLICK.
+    " ALV 삭제 버튼 이벤트 구현
+    PERFORM HANDLE_BUTTON_CLICK USING ES_COL_ID ES_ROW_NO.
+  ENDMETHOD.
+
+  METHOD BUTTON_CLICK_REASON.
+    " 반려 사유 상세 텍스트 에디터 디스플레이
+    PERFORM HANDLE_BUTTON_CLICK_REASON USING ES_COL_ID ES_ROW_NO.
+  ENDMETHOD.
+
+  METHOD DATA_CHANGE.
+    " 자재코드와 수량 모두 입력 시 자재명, 금액, 통화 자동으로 계산
+    PERFORM HANDLE_DATA_CHANGE USING E_MODIFIED ET_GOOD_CELLS.
+  ENDMETHOD.
+
+  METHOD SEARCH_HELP.
+    " 자재코드에 대한 Search Help(F4)
+    PERFORM ONF4 USING E_FIELDNAME E_FIELDVALUE ES_ROW_NO ER_EVENT_DATA ET_BAD_CELLS E_DISPLAY.
+  ENDMETHOD.
+
+  METHOD HOTSPOT_CLICK.
+    " 판매오더 아이템 불러오기
+    PERFORM HANDLE_HOTSPOT_CLICK USING E_COLUMN_ID E_ROW_ID.
+  ENDMETHOD.
+ENDCLASS.
