@@ -1,0 +1,11 @@
+PROCESS BEFORE OUTPUT.
+  MODULE status_0200.
+  MODULE screen_init_value2.
+
+
+PROCESS AFTER INPUT.
+  MODULE exit_200 AT EXIT-COMMAND.
+  MODULE user_command_0200.
+
+PROCESS ON VALUE-REQUEST.
+  FIELD gv_bpco   MODULE get_bpcode.
