@@ -1,0 +1,7 @@
+PROCESS BEFORE OUTPUT.
+ MODULE status_0102.
+ MODULE set_pop_text_read.
+
+PROCESS AFTER INPUT.
+ MODULE exit_pop_2 AT EXIT-COMMAND.
+* MODULE user_command_0102.

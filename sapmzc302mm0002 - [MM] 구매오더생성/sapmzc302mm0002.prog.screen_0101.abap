@@ -1,0 +1,10 @@
+PROCESS BEFORE OUTPUT.
+ MODULE STATUS_0101.
+ MODULE get_po_item.
+ MODULE init_popup_process_control.
+* MODULE get_popup_data.
+
+PROCESS AFTER INPUT.
+ MODULE popup_exit at EXIT-COMMAND.
+ MODULE USER_COMMAND_0101.
+

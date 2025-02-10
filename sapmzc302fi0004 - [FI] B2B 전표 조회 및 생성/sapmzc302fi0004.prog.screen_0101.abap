@@ -1,0 +1,7 @@
+PROCESS BEFORE OUTPUT.
+  MODULE status_0101.
+  MODULE init_popup_control.
+
+PROCESS AFTER INPUT.
+  MODULE exit_popup AT EXIT-COMMAND.
+  MODULE user_command_0101.
