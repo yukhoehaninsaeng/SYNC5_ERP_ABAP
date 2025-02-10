@@ -1,0 +1,10 @@
+PROCESS BEFORE OUTPUT.
+  MODULE status_0101.
+  MODULE make_display.
+*
+PROCESS AFTER INPUT.
+  MODULE exit_pop AT EXIT-COMMAND.
+  MODULE user_command_0101.
+
+PROCESS ON VALUE-REQUEST.
+  FIELD gv_emp_num MODULE get_employee.
